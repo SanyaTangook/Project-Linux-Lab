@@ -8,7 +8,6 @@ export default function Home() {
     const data = await response.json();
     setMessage(data.message);
   };
-
   return (
     <div>
       <button onClick={handleClick}>Pull Docker image</button>

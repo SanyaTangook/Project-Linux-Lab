@@ -4,7 +4,7 @@ import cors from "cors";
 
 // กำหนดค่าที่ใช้งาน
 const DOCKER_IMAGE_NAME = "ubuntu"; // ชื่อ Docker image ที่ต้องการดึง
-const DOCKER_IMAGE_TAG = "22.0"; // ชื่อ tag ของ Docker image
+const DOCKER_IMAGE_TAG = "20.4"; // ชื่อ tag ของ Docker image
 const DOCKER_HUB_USERNAME = "sanyats"; // Docker Hub username
 const DOCKER_HUB_PASSWORD = "Sanya23032002"; // Docker Hub password
 const DOCKER_PULL_COMMAND = `docker pull ${DOCKER_HUB_USERNAME}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}`; // คำสั่ง Shell สำหรับดึง Docker image
