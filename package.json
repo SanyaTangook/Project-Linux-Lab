@@ -3,14 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
     "next": "13.4.1",
+    "node-fetch": "^3.3.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "xterm": "^5.1.0",
+    "xterm-addon-fit": "^0.7.0"
   }
 }
