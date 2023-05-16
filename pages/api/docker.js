@@ -1,6 +1,8 @@
 import fetch from "node-fetch";
 import { spawn } from "child_process";
 import cors from "cors";
+import Docker from 'dockerode';
+
 
 // กำหนดค่าที่ใช้งาน
 const DOCKER_IMAGE_NAME = "ubuntu"; // ชื่อ Docker image ที่ต้องการดึง
