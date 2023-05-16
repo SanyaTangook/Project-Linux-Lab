@@ -9,7 +9,7 @@ export default function Home() {
 
   const handleClick = async () => {
     const response = await fetch('/api/docker');
-    const repo = await fetch('/api/run-container?image=sanyats/ubuntu:20.4');
+    // const repo = await fetch('/api/run-container?image=sanyats/ubuntu:20.4');
     const data = await response.json();
     setMessage(data.message);
   };
