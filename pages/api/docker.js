@@ -23,9 +23,9 @@ export default async function handler(req, res) {
     });
 
     // คำสั่งในการ run
-    const runProcess = spawn(DOCKER_RUN_COMMAND , [] ,{
+    const runProcess = spawn(DOCKER_RUN_COMMAND, [], {
       shell: true,
-    })
+    });
     // รอการดึง Docker image เสร็จสิ้น
     pullProcess.on("close", async (code) => {
       if (code !== 0) {
@@ -33,13 +33,11 @@ export default async function handler(req, res) {
         res.status(500).json({ message: "Failed to pull Docker image" });
       } else {
         // หากดึง Docker image เสร็จสิ้นสำเร็จ ส่งข้อความตอบกลับเป็น JSON ที่บอกว่าดึง Docker image เสร็จสิ้น
-      runProcess.on("close" ,async(code) => {
-        if (code !== 0){
-          res.status(200).json({message : `run Failed`})
-        } else{
-          res.status(200).json({ message: `Docker image pulled & run ${DOCKER_IMAGE_NAME } successfully` });
-        }
-      });
+        res
+          .status(200)
+          .json({
+            message: `Docker image pulled & run ${DOCKER_IMAGE_NAME} successfully`,
+          });
       }
     });
   });
