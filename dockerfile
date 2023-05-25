@@ -1,28 +1,23 @@
-FROM ubuntu:20.04
+FROM node:16.8.0-alpine
 
-# อัปเดต package และลง package ที่จำเป็นสำหรับการใช้งาน
-RUN apt-get update && \
-    apt-get install -y \
-        curl \
-        wget \
-        gnupg \
-        apt-transport-https \
-        ca-certificates \
-        vim \
-        nano \
-        software-properties-common
+ARG ssh_pub_key
 
-# ค่า ENV สำหรับสิ่งที่ใช้งานบ่อยๆ ในการทำงานกับ Docker container
-ENV DEBIAN_FRONTEND noninteractive
-ENV LANG C.UTF-8
+RUN mkdir -p /root/.ssh \
+    && chmod 0700 /root/.ssh \
+    && passwd -u root \
+    && echo "$ssh_pub_key" > /root/.ssh/authorized_keys \
+    && apk add openrc openssh \
+    && ssh-keygen -A \
+    && echo -e "PasswordAuthentication no" >> /etc/ssh/sshd_config \
+    && mkdir -p /run/openrc \
+    && touch /run/openrc/softlevel
 
-# เปลี่ยน working directory เป็น /app
 WORKDIR /app
 
-# ลบ package ที่ไม่ได้ใช้งานออกเพื่อลดขนาด image
-RUN apt-get autoremove -y && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+COPY . .
 
-# รันคำสั่ง default ที่จะทำเมื่อ container ถูกสร้าง
-CMD ["/bin/bash"]
+RUN yarn
+
+RUN yarn build
+
+ENTRYPOINT ["sh", "-c", "rc-status; rc-service sshd start; yarn start"]
