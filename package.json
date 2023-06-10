@@ -10,18 +10,20 @@
   },
   "dependencies": {
     "child_process": "^1.0.2",
+    "cidr-matcher": "^2.1.1",
     "cors": "^2.8.5",
     "dockerode": "^3.3.5",
+    "json-merger": "^1.1.9",
     "next": "13.4.1",
     "node-fetch": "^3.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "xterm": "^4.1.0",
-    "cidr-matcher": "^2.1.1",
-    "json-merger": "^1.1.9",
+    "react-xterm": "^2.0.4",
     "read-config-ng": "^3.0.5",
     "serve-favicon": "^2.5.0",
     "ssh2": "^1.11.0",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "xterm": "^4.19.0",
+    "xterm-addon-fit": "^0.7.0"
   }
 }

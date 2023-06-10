@@ -5,7 +5,7 @@ export default function Home() {
   const [message, setMessage] = useState('');
 
   const handleClick = async () => {
-    const response = await fetch('/api/docker');
+    const response = await fetch('/api/config');
     const data = await response.json();
     setMessage(data.message);
   };
