@@ -9,11 +9,13 @@ export default function Home() {
     const data = await response.json();
     setMessage(data.message);
   };
-
+  let a = ['1a' , '2b', '3c'];
   return (
+    
     <div>
       <button onClick={handleClick}>Pull & Run Docker image in my PC</button>
       <p>{message}</p>
+{a.map((row, index) => {row})}
     </div>
   );
 }
